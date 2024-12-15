@@ -80,6 +80,7 @@ export const UserStorage = ({ children }: any) => {
             create,
             login,
             user,
+            token,
             handleLogin,
             logOut,
             createUser,

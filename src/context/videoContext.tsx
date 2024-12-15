@@ -10,14 +10,13 @@ export const VideoStorage = ({children}: any) => {
     const [video, setVideo] = useState({});
     const token = localStorage.getItem('token') as any;
 
-    const createVideos = (title: string, user_id: string, description: string, thumbnail: string, PublishedAt: Date) => {
+    const createVideos = ( token: string,title: string, user_id: string, description: string, thumbnail: string, publishedAt: Date) => {
         if( title === '' || description === '' || thumbnail === '' ){
             toast.warning('Preencha todos os campos')
 
             return
         } 
-        api.post(`/videos/create-video'${user_id}`, { title, description, thumbnail, PublishedAt}, {headers: {"Authorization":`${token}`}} ).then(() =>{
-           console.log(token)
+        api.post('/videos/create-video', { title, description, thumbnail, publishedAt}, {headers: {"Authorization":`${token}`}} ).then(() =>{
             setCreateVideo(true);
             toast.success('Vídeo criado com sucesso');
             console.log('Vídeo criado com sucesso!');

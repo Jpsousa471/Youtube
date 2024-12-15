@@ -2,7 +2,6 @@ import { useContext, useRef, useState } from "react";
 import { 
     BoxCreate,
     Button,
-    CardVideos,
     Container,
     ContainerModal,
     Exit,
@@ -53,6 +52,7 @@ function CreateVideo(){
 
 
     const createMyVideo = () => {
+
       const date: Date = new Date();
 
       if (thumbnail.trim() !== '') {
@@ -92,8 +92,8 @@ function CreateVideo(){
         }
       }
       else {
-        createVideos( title, USER_ID, description, thumbnail, date)
         axios.defaults.headers.common['Authorization'] = token
+        createVideos( USER_ID, title, description, thumbnail, date)
         console.log(token, USER_ID, title, description, thumbnail, date)
         setOpenBox(true)
         clearInputs()
